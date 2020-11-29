@@ -51,13 +51,13 @@ namespace Functional
 
             Func<int[], int> summator = ints =>
             {
-                int sum = 0;
-                for (var i = 0; i < ints.Length; i++)
+                int min = ints[0];
+                for (var i = 1; i < ints.Length; i++)
                 {
-                    sum += ints[i];
+                    min = Math.Min(min, ints[i]);
                 }
 
-                return sum;
+                return min;
             };
             
             Console.WriteLine(summator(lineParser(line.Split(' '))));
