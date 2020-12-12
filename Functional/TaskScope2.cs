@@ -74,7 +74,8 @@ namespace Functional
 
         public override void Task3()
         {
-            Func<string[], int, string[]> filter = (strings, maxSLen) => strings.Where(s => s.Length <= maxSLen).ToArray();
+            Func<string[], int, string[]> filter = (strings, maxSLen) =>
+                strings.Where(s => s.Length <= maxSLen).ToArray();
             Action<string[]> printer = strings => Console.WriteLine(string.Join(" ", strings));
 
             var line = Console.ReadLine();
@@ -87,6 +88,18 @@ namespace Functional
 
         public override void Task4()
         {
+            var comparer = Comparer<int>.Create((i, j) =>
+            {
+                if (i % 2 == 0 && j % 2 == 1) return -1;
+                if (j % 2 == 0 && i % 2 == 1) return 1;
+                return i.CompareTo(j);
+            });
+
+            var line = Console.ReadLine();
+            var strings = line.Split(' ');
+            var numbers = lineParser(strings);
+            Array.Sort(numbers, comparer);
+            Console.WriteLine(string.Join(" ", numbers));
         }
     }
 }

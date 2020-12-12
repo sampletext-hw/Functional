@@ -7,7 +7,8 @@ namespace Functional
     {
         static void Main(string[] args)
         {
-            TaskPool pool = new TaskScope1();
+            TaskPool pool = new TaskScope2();
+            pool.Task4();
         }
     }
 }
