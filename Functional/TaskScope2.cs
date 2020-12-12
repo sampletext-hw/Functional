@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Functional
@@ -60,6 +61,15 @@ namespace Functional
 
         public override void Task2()
         {
+            Func<int[], int[]> reverser = ints => ints.Reverse().ToArray();
+            Func<int[], int, int[]> filterDivider = (ints, d) => ints.Where(i => i % d != 0).ToArray();
+            Action<int[]> printer = ints => Console.WriteLine(string.Join(" ", ints));
+
+            var line = Console.ReadLine();
+            var strings = line.Split(' ');
+            var numbers = lineParser(strings);
+            int divider = int.Parse(Console.ReadLine());
+            printer(filterDivider(reverser(numbers), divider));
         }
 
         public override void Task3()
