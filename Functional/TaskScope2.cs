@@ -74,6 +74,15 @@ namespace Functional
 
         public override void Task3()
         {
+            Func<string[], int, string[]> filter = (strings, maxSLen) => strings.Where(s => s.Length <= maxSLen).ToArray();
+            Action<string[]> printer = strings => Console.WriteLine(string.Join(" ", strings));
+
+            var line = Console.ReadLine();
+            int number = int.Parse(line);
+
+            line = Console.ReadLine();
+            var names = line.Split(' ');
+            printer(filter(names, number));
         }
 
         public override void Task4()
